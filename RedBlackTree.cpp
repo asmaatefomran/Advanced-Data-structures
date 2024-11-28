@@ -187,7 +187,9 @@ private:
                     x = x->parent;
                 } else {
                     //case 5 if needed
-                    if (sibling->left->color == true) {
+                    // update we should check on the far before the near because if the far is red we will
+                    //apply case 6 and will not care about if the near is red or black
+                    if (sibling->right->color == false) {
                         sibling->left->color = false;
                         sibling->color = true;
                         right_rotate(sibling);
